@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">vendas_app</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="title_vendas">Cadastra Vendas</string>
+    <string name="title_principal">Principal</string>
+
+
+</resources>

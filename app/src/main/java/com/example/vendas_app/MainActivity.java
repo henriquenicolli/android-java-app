@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.example.vendas_app.adapter.RecyclerItemClickListener;
 import com.example.vendas_app.adapter.VendasAdapter;
+import com.example.vendas_app.dados.Banco;
 import com.example.vendas_app.model.Venda;
 
 import java.util.ArrayList;
@@ -71,6 +72,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        vendas = Banco.getBanco(MainActivity.this).vendaDao().getAll();
+        adapter = new VendasAdapter(vendas);
+        recyclerView.setAdapter(adapter);
+    }
+
     private void showAlertDialog(int position) {
         vendaSelecionada = vendas.get(position);
 
@@ -91,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(it);
                 }
                 else if(options[which].equals("Remover")){
-                    //remove(selectedOcurrence);
+                    removerVenda(vendaSelecionada);
                 }
             }
         });
@@ -99,6 +110,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private void removerVenda(Venda vendaSelecionada) {
+        Banco.getBanco(MainActivity.this).vendaDao().remove(vendaSelecionada);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,13 +1,22 @@
 package com.example.vendas_app.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+@Entity(tableName = "venda")
 public class Venda {
 
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @ColumnInfo(name = "produto")
     private String produto;
 
+    @ColumnInfo(name = "descricao")
     private String descricao;
 
+    @ColumnInfo(name = "preco")
     private float preco;
 
 

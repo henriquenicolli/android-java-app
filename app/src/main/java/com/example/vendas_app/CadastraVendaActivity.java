@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.vendas_app.dados.Banco;
 import com.example.vendas_app.model.Venda;
 
 public class CadastraVendaActivity extends AppCompatActivity {
@@ -68,7 +69,7 @@ public class CadastraVendaActivity extends AppCompatActivity {
         venda.setDescricao(edtDescricao.getText().toString());
         venda.setPreco(Float.valueOf(edtPreco.getText().toString()));
 
-        MainActivity.vendas.add(venda);
+        Banco.getBanco(CadastraVendaActivity.this).vendaDao().insert(venda);
 
         finish();
     }

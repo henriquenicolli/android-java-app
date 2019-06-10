@@ -5,8 +5,8 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-import com.example.vendas_app.model.Pendencia;
-import com.example.vendas_app.model.Venda;
+import com.example.vendas_app.modelo.Pendencia;
+import com.example.vendas_app.modelo.Venda;
 
 @Database(entities = {Pendencia.class, Venda.class}, version = 1)
 public abstract class Banco extends RoomDatabase {

@@ -1,7 +1,8 @@
-package com.example.vendas_app.model;
+package com.example.vendas_app.modelo;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "venda")
@@ -18,6 +19,7 @@ public class Venda {
 
     @ColumnInfo(name = "preco")
     private float preco;
+
 
 
     public int getId() {

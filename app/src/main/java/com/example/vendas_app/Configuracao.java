@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-public class ConfiguracaoActivity extends AppCompatActivity {
+public class Configuracao extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,7 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.example.vendas_app.model.Pendencia;
+import com.example.vendas_app.modelo.Pendencia;
 
 import java.util.List;
 

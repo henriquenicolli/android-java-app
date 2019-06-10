@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,10 +13,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.vendas_app.adapter.RecyclerItemClickListener;
-import com.example.vendas_app.adapter.VendasAdapter;
 import com.example.vendas_app.dados.Banco;
-import com.example.vendas_app.model.Venda;
+import com.example.vendas_app.modelo.Venda;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +25,8 @@ public class MainActivity extends AppCompatActivity {
     public static Venda vendaSelecionada;
 
     private RecyclerView recyclerView;
-    private VendasAdapter adapter;
+    private VendasLista adapter;
     private RecyclerView.LayoutManager layoutManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,27 +42,15 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new VendasAdapter(vendas);
+        adapter = new VendasLista(vendas, this,this);
         recyclerView.setAdapter(adapter);
-
-        recyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        showAlertDialog(position);
-                    }
-
-                    @Override public void onLongItemClick(View view, int position) {
-                        // not implemented
-                    }
-                })
-        );
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(MainActivity.this, CadastraVendaActivity.class);
+                Intent it = new Intent(MainActivity.this, CadastraVenda.class);
                 startActivity(it);
             }
         });
@@ -78,41 +62,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         vendas = Banco.getBanco(MainActivity.this).vendaDao().getAll();
-        adapter = new VendasAdapter(vendas);
+        adapter = new VendasLista(vendas, this,this);
         recyclerView.setAdapter(adapter);
-    }
-
-    private void showAlertDialog(int position) {
-        vendaSelecionada = vendas.get(position);
-
-        final String[] options = {
-                ("Editar"),
-                ("Remover"),
-                ("Inserir pendência")
-        };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Opções");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (options[which].equals("Inserir pendência")){
-                    Intent it = new Intent(MainActivity.this, PendenciaActivity.class);
-                    //it.putExtra("data",selectedOcurrence);
-                    startActivity(it);
-                }
-                else if(options[which].equals("Remover")){
-                    removerVenda(vendaSelecionada);
-                }
-            }
-        });
-        builder.show();
-
-
-    }
-
-    private void removerVenda(Venda vendaSelecionada) {
-        Banco.getBanco(MainActivity.this).vendaDao().remove(vendaSelecionada);
     }
 
 
@@ -127,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            Intent it = new Intent(MainActivity.this, ConfiguracaoActivity.class);
+            Intent it = new Intent(MainActivity.this, Configuracao.class);
             startActivity(it);
             return true;
         }

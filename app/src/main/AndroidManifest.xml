@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditarVenda"></activity>
+        <activity android:name=".EditarPendencia"></activity>
+        <activity android:name=".VerPendencias" />
+        <activity android:name=".EditarVenda" />
         <activity android:name=".PendenciaCadastro" />
         <activity android:name=".Configuracao" />
         <activity android:name=".CadastraVenda" />

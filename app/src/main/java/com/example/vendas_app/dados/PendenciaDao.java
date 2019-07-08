@@ -7,6 +7,7 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.example.vendas_app.modelo.Pendencia;
+import com.example.vendas_app.modelo.Venda;
 
 import java.util.List;
 
@@ -15,6 +16,12 @@ public interface PendenciaDao {
 
     @Query("SELECT * FROM pendencia")
     List<Pendencia> getAll();
+
+    @Query("SELECT * FROM pendencia WHERE id = :id")
+    Pendencia getById(int id);
+
+    @Query("SELECT * FROM pendencia WHERE vendaId = :id")
+    List<Pendencia> getByVendaId(int id);
 
     @Insert
     void insert(Pendencia pendencia);

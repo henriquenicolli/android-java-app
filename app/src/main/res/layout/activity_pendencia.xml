@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Observações" />
+        android:hint="@string/description" />
 
     <EditText
         android:id="@+id/editText2"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Data lançamento" />
+        android:hint="@string/date_lanca" />
 
     <EditText
         android:id="@+id/editText3"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Data vencimento" />
+        android:hint="@string/date_finish" />
 
 
 </LinearLayout>

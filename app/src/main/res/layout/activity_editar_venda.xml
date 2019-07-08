@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:hint="Preço" />
+        android:hint="@string/value" />
 
     <EditText
         android:id="@+id/edt_descricao1"
@@ -43,12 +43,12 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Descrição" />
+        android:hint="@string/description" />
 
     <Button
         android:id="@+id/salvarbotao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="salvar"/>
+        android:text="@string/save"/>
 
 </LinearLayout>

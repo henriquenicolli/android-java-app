@@ -5,7 +5,11 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "pendencia", foreignKeys = @ForeignKey(entity = Venda.class, parentColumns = "id", childColumns = "vendaId"))
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
+@Entity(tableName = "pendencia",
+        foreignKeys = @ForeignKey(entity = Venda.class, parentColumns = "id",
+                onDelete = CASCADE, onUpdate = CASCADE, childColumns = "vendaId"))
 public class Pendencia {
 
     @PrimaryKey(autoGenerate = true)

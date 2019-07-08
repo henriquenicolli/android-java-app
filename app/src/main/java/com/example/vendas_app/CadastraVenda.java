@@ -28,9 +28,9 @@ public class CadastraVenda extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.title_vendas));
 
-          edtTitutlo = findViewById(R.id.produto);
-          edtDescricao = findViewById(R.id.descricao);
-          edtPreco = findViewById(R.id.preco);
+        edtTitutlo = findViewById(R.id.produto);
+        edtDescricao = findViewById(R.id.descricao);
+        edtPreco = findViewById(R.id.preco);
 
     }
 
@@ -59,7 +59,7 @@ public class CadastraVenda extends AppCompatActivity {
     }
 
     private void cadastraVenda() {
-        Toast.makeText(this,"Venda Cadastrada", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,this.getString(R.string.sale_confirm), Toast.LENGTH_LONG).show();
 
         Venda venda = new Venda();
 

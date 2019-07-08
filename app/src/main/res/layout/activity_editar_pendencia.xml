@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CadastraVenda">
+    tools:context=".EditarPendencia">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -22,24 +22,33 @@
     </android.support.design.widget.AppBarLayout>
 
     <EditText
-        android:id="@+id/produto"
+        android:id="@+id/edt_produto1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="@string/produtc" />
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/date_lanca" />
 
     <EditText
-        android:id="@+id/preco"
+        android:id="@+id/edt_preco1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="@string/value" />
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/date_finish" />
 
     <EditText
-        android:id="@+id/descricao"
+        android:id="@+id/edt_descricao1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/description" />
+
+    <Button
+        android:id="@+id/salvarbotao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"/>
 
 </LinearLayout>

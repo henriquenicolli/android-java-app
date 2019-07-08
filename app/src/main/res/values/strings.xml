@@ -3,8 +3,33 @@
     <string name="action_settings">Settings</string>
 
 
-    <string name="title_vendas">Cadastra Vendas</string>
-    <string name="title_principal">Principal</string>
+    <string name="title_vendas">Create Sale</string>
+    <string name="title_principal">Main</string>
+    <string name="title">Title</string>
+    <string name="delete">Delete</string>
+    <string name="confirm">OK</string>
+    <string name="negative">CANCEL</string>
+
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+    <string name="isnert">Insert</string>
+    <string name="options">Options</string>
+
+
+    <string name="pendent">Pendency</string>
+    <string name="pendent_save">Entry Pendency</string>
+    <string name="configuration">Configurations</string>
+    <string name="sale_confirm">Sale inserted</string>
+
+
+    <string name="produtc">Product</string>
+    <string name="value">Value</string>
+    <string name="description">Description</string>
+    <string name="save">Salvar</string>
+
+    <string name="date_lanca">Date put</string>
+    <string name="date_finish">Date finish</string>
+    <string name="ver_pendencias">View pendencys</string>
 
 
 </resources>

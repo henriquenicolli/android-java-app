@@ -28,7 +28,7 @@ public class PendenciaCadastro extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Pendências");
+        getSupportActionBar().setTitle(this.getString(R.string.pendent));
 
         Intent i = getIntent();
         vendaId = i.getIntExtra("data", 0);
@@ -64,7 +64,7 @@ public class PendenciaCadastro extends AppCompatActivity {
     }
 
     private void cadastraPendencia() {
-        Toast.makeText(this,"Pendencia cadastrada", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,this.getString(R.string.pendent_save), Toast.LENGTH_SHORT).show();
 
         Pendencia pendencia = new Pendencia();
         pendencia.setObservacao(edt1.getText().toString());

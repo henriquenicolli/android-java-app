@@ -15,7 +15,7 @@ public class Configuracao extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Configuracoes");
+        getSupportActionBar().setTitle(this.getString(R.string.configuration));
     }
 
 

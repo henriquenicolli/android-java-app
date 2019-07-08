@@ -14,18 +14,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.vendas_app.dados.Banco;
+import com.example.vendas_app.modelo.Pendencia;
 import com.example.vendas_app.modelo.Venda;
 
 import java.util.List;
 
-public class VendasLista extends RecyclerView.Adapter<VendasLista.MyViewHolder> {
+public class PendenciaLista extends RecyclerView.Adapter<PendenciaLista.MyViewHolder> {
 
-    public List<Venda> vendas;
+    public List<Pendencia> pendencias;
     Context context;
     Activity activity;
 
-    public VendasLista(List<Venda> vendas, Context ctx, Activity activity){
-        this.vendas = vendas;
+    public PendenciaLista(List<Pendencia> pendencias, Context ctx, Activity activity){
+        this.pendencias = pendencias;
         this.context = ctx;
         this.activity = activity;
     }
@@ -33,28 +34,26 @@ public class VendasLista extends RecyclerView.Adapter<VendasLista.MyViewHolder> 
 
     @NonNull
     @Override
-    public VendasLista.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public PendenciaLista.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         return new MyViewHolder(LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_venda, viewGroup, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VendasLista.MyViewHolder myViewHolder, int i) {
-        myViewHolder.titulo.setText(vendas.get(i).getProduto());
-        myViewHolder.descricao.setText(vendas.get(i).getDescricao());
-        myViewHolder.preco.setText(Float.toString(vendas.get(i).getPreco()));
+    public void onBindViewHolder(@NonNull PendenciaLista.MyViewHolder myViewHolder, int i) {
+        myViewHolder.titulo.setText(pendencias.get(i).getData_lancamento());
+        myViewHolder.descricao.setText(pendencias.get(i).getData_vencimento());
+        myViewHolder.preco.setText(pendencias.get(i).getObservacao());
 
-        final Venda vendaSelecionada = vendas.get(i);
+        final Pendencia pendenciaSelecionada = pendencias.get(i);
 
         myViewHolder.acao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 final String[] valores = {
-                        (activity.getString(R.string.isnert)),
                         (activity.getString(R.string.remove)),
                         (activity.getString(R.string.edit)),
-                        (activity.getString(R.string.ver_pendencias))
                 };
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -62,24 +61,16 @@ public class VendasLista extends RecyclerView.Adapter<VendasLista.MyViewHolder> 
                 builder.setItems(valores, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int index) {
-                        if (valores[index].equals(activity.getString(R.string.isnert))){
-                            Intent intent = new Intent(context , PendenciaCadastro.class);
-                            intent.putExtra("data",vendaSelecionada.getId());
-                            activity.startActivity(intent);
-                        }
-                        else if(valores[index].equals(activity.getString(R.string.remove))){
-                            removerVenda(vendaSelecionada);
+
+                        if(valores[index].equals(activity.getString(R.string.remove))){
+                            removerPendencia(pendenciaSelecionada);
                         }
                         else if (valores[index].equals(activity.getString(R.string.edit))){
-                            Intent intent = new Intent(context , EditarVenda.class);
-                            intent.putExtra("data", vendaSelecionada.getId());
+                            Intent intent = new Intent(context , EditarPendencia.class);
+                            intent.putExtra("data", pendenciaSelecionada.getId());
                             activity.startActivity(intent);
                         }
-                        else if(valores[index].equals(activity.getString(R.string.ver_pendencias))){
-                            Intent intent = new Intent(context, VerPendencias.class);
-                            intent.putExtra("data", vendaSelecionada.getId());
-                            activity.startActivity(intent);
-                        }
+
                     }
                 });
 
@@ -90,14 +81,14 @@ public class VendasLista extends RecyclerView.Adapter<VendasLista.MyViewHolder> 
     }
 
 
-    private void removerVenda(final Venda vendaSelecionada) {
+    private void removerPendencia(final Pendencia pendenciaSelecionada) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(activity.getString(R.string.title));
         builder.setMessage(activity.getString(R.string.delete));
         builder.setPositiveButton(activity.getString(R.string.confirm), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Banco.getBanco(activity).vendaDao().remove(vendaSelecionada);
+                Banco.getBanco(activity).pendenciaDao().remove(pendenciaSelecionada);
                 Intent it = new Intent(context, MainActivity.class);
                 context.startActivity(it);
             }
@@ -115,7 +106,7 @@ public class VendasLista extends RecyclerView.Adapter<VendasLista.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return vendas.size();
+        return pendencias.size();
     }
 
 
